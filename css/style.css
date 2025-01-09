@@ -1302,4 +1302,173 @@ textarea:focus {
 .welcome-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 0 30px rgba(123, 31, 162, 0.6);
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    /* 弹窗适配 */
+    .mystic-dialog {
+        align-items: flex-start;
+        padding: 1rem;
+        overflow-y: auto;
+    }
+
+    .mystic-dialog-content {
+        margin: 1rem auto;
+        padding: 1.5rem;
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* 欢迎弹窗适配 */
+    .welcome-dialog .mystic-dialog-content {
+        max-width: 100%;
+    }
+
+    .feature-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .feature-item {
+        padding: 0.8rem;
+    }
+
+    .welcome-icon {
+        font-size: 3rem;
+    }
+
+    .welcome-title {
+        font-size: 1.5rem;
+    }
+
+    .welcome-description > p {
+        font-size: 1rem;
+    }
+
+    /* 验证弹窗适配 */
+    .verify-dialog .mystic-dialog-content {
+        max-width: 100%;
+    }
+
+    .verify-notice {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    .wechat-id {
+        font-size: 1.2rem;
+        padding: 0.6rem;
+    }
+
+    /* 按钮适配 */
+    .mystic-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .welcome-button {
+        padding: 1rem 2rem;
+    }
+
+    /* 预测步骤适配 */
+    .prediction-steps .step {
+        margin: 0.8rem 0;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* 魔法阵适配 */
+    .magic-circles {
+        width: 200px;
+        height: 200px;
+    }
+
+    /* 水晶球适配 */
+    .crystal-ball {
+        width: 120px;
+        height: 120px;
+        margin: 1.5rem auto;
+    }
+
+    /* 结果显示适配 */
+    .result-content {
+        padding: 1.5rem;
+    }
+
+    .magic-runes {
+        gap: 1rem;
+    }
+
+    .rune {
+        font-size: 1.5rem;
+    }
+
+    /* 滚动条美化 */
+    .mystic-dialog-content::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .mystic-dialog-content::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+    }
+
+    .mystic-dialog-content::-webkit-scrollbar-thumb {
+        background: rgba(123, 31, 162, 0.5);
+        border-radius: 3px;
+    }
+
+    .mystic-dialog-content::-webkit-scrollbar-thumb:hover {
+        background: rgba(123, 31, 162, 0.7);
+    }
+
+    /* 输入框适配 */
+    textarea {
+        padding: 1rem;
+        font-size: 1rem;
+        min-height: 100px;
+    }
+
+    /* 标题栏适配 */
+    .subtitle {
+        gap: 0.5rem;
+        padding: 0.4rem;
+    }
+
+    .mystic-text {
+        font-size: 0.9rem;
+    }
+
+    .mystic-rune {
+        font-size: 1.1rem;
+    }
+
+    /* 对话框内容间距调整 */
+    .dialog-body {
+        margin-bottom: 1.5rem;
+    }
+
+    .dialog-body p {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .dialog-body li {
+        margin: 0.8rem 0;
+        padding: 0.6rem;
+    }
+
+    .dialog-header h3 {
+        font-size: 1.3rem;
+    }
 } 
