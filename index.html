@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来预测机</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="magic-energy"></div>
+    
+    <div class="container">
+        <header>
+            <h1>🔮 未来预测机</h1>
+            <div class="subtitle">
+                <span class="mystic-rune">⚘</span>
+                <span class="mystic-text">古老智慧</span>
+                <span class="divider">✧</span>
+                <span class="mystic-text">神秘力量</span>
+                <span class="mystic-rune">⚜</span>
+            </div>
+        </header>
+        
+        <main>
+            <div class="prediction-form">
+                <div class="mystic-border">
+                    <textarea 
+                        id="questionInput" 
+                        placeholder="请输入你想预测的问题，例如：明天的天气如何？"
+                        rows="4"
+                    ></textarea>
+                </div>
+                <button id="predictBtn" class="predict-button">
+                    <span class="button-text">开始预测</span>
+                    <div class="button-particles"></div>
+                </button>
+            </div>
+
+            <div class="result-container">
+                <div id="loadingIndicator" class="loading hidden">
+                    <div class="prediction-process">
+                        <div class="crystal-ball">
+                            <div class="crystal-ball-inner"></div>
+                            <div class="crystal-ball-light"></div>
+                        </div>
+                        <div class="magic-circles">
+                            <div class="circle circle-1"></div>
+                            <div class="circle circle-2"></div>
+                            <div class="circle circle-3"></div>
+                        </div>
+                        <div class="prediction-steps">
+                            <div class="step">✧ 连接神秘力量...</div>
+                            <div class="step">⚝ 解析命运轨迹...</div>
+                            <div class="step">✧ 凝聚预言能量...</div>
+                            <div class="step">⚝ 展现未来图景...</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="resultBox" class="result hidden">
+                    <div class="result-scroll"></div>
+                    <h3>✧ 预测结果 ✧</h3>
+                    <div class="result-content">
+                        <p id="predictionResult"></p>
+                    </div>
+                    <div class="magic-runes">
+                        <span class="rune">☽</span>
+                        <span class="rune">☉</span>
+                        <span class="rune">☿</span>
+                        <span class="rune">♀</span>
+                        <span class="rune">♂</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>注意：预测结果仅供参考，请理性对待</p>
+            <div class="mystic-symbols">
+                <span>✧</span><span>⚝</span><span>✧</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

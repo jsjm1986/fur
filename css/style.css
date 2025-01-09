@@ -1,0 +1,1305 @@
+:root {
+    --primary-color: #4a148c;
+    --secondary-color: #7b1fa2;
+    --background-color: #000;
+    --text-color: #fff;
+    --mystic-shadow: 0 0 15px rgba(123, 31, 162, 0.5);
+    --rune-color: #b39ddb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-image: url('https://cdn.jsdelivr.net/gh/alphardex/static@master/images/stars.png');
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(74, 20, 140, 0.2) 0%, rgba(0, 0, 0, 0.8) 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 10px var(--secondary-color);
+}
+
+h1 {
+    color: var(--text-color);
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    animation: titleGlow 2s infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 10px var(--secondary-color);
+    }
+    to {
+        text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
+    }
+}
+
+.subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background: rgba(74, 20, 140, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.mystic-text {
+    color: var(--rune-color);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(123, 31, 162, 0.8);
+    animation: textPulse 2s infinite alternate;
+}
+
+.mystic-rune {
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    animation: runeRotate 4s infinite linear;
+    display: inline-block;
+}
+
+.subtitle .divider {
+    color: var(--secondary-color);
+    opacity: 0.8;
+    animation: dividerGlow 2s infinite alternate;
+}
+
+@keyframes textPulse {
+    from {
+        text-shadow: 0 0 5px rgba(123, 31, 162, 0.5);
+        transform: scale(1);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(123, 31, 162, 1);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes runeRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dividerGlow {
+    from {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.prediction-form {
+    background: rgba(26, 6, 46, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--mystic-shadow);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(123, 31, 162, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+}
+
+textarea {
+    width: 100%;
+    padding: 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    resize: vertical;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    min-height: 120px;
+    box-shadow: 
+        0 0 15px rgba(123, 31, 162, 0.2),
+        inset 0 0 10px rgba(123, 31, 162, 0.1);
+    transition: all 0.4s ease;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 
+        0 0 20px rgba(123, 31, 162, 0.4),
+        inset 0 0 15px rgba(123, 31, 162, 0.2);
+    transform: translateY(-2px);
+}
+
+.predict-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 1.2rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.predict-button .button-text {
+    position: relative;
+    z-index: 3;
+}
+
+.predict-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.button-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.predict-button:hover::before {
+    left: 100%;
+}
+
+.predict-button:hover {
+    box-shadow: 0 0 20px var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.result-container {
+    background: rgba(26, 6, 46, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--mystic-shadow);
+    border: 1px solid rgba(123, 31, 162, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+    margin-top: 3rem;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+}
+
+.crystal-ball {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin: 2rem auto;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.crystal-ball-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.9),
+        rgba(123, 31, 162, 0.4) 40%,
+        rgba(74, 20, 140, 0.8)
+    );
+    position: relative;
+    animation: crystalFloat 4s infinite ease-in-out;
+    box-shadow: 
+        0 0 30px rgba(123, 31, 162, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.crystal-ball::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 20px;
+    background: rgba(123, 31, 162, 0.3);
+    bottom: -20px;
+    left: -10%;
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: shadowPulse 4s infinite ease-in-out;
+}
+
+@keyframes shadowPulse {
+    0%, 100% {
+        transform: scaleX(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scaleX(1.2);
+        opacity: 0.4;
+    }
+}
+
+@keyframes crystalFloat {
+    0%, 100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotateY(180deg);
+    }
+}
+
+.crystal-ball-light {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 20%;
+    height: 20%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    filter: blur(5px);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 0.5; }
+}
+
+.result {
+    padding: 1rem;
+}
+
+.result h3 {
+    color: #b39ddb;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px rgba(123, 31, 162, 0.5);
+}
+
+.result p {
+    color: #fff;
+    line-height: 1.8;
+    text-shadow: 0 0 5px rgba(123, 31, 162, 0.3);
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: #b39ddb;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* 星空背景 */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000 url('https://cdn.jsdelivr.net/gh/alphardex/static@master/images/stars.png') repeat;
+    z-index: -2;
+}
+
+.twinkling {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    animation: twinkle 200s linear infinite;
+}
+
+@keyframes twinkle {
+    from {background-position: 0 0;}
+    to {background-position: -10000px 5000px;}
+}
+
+/* 神秘边框 */
+.mystic-border {
+    position: relative;
+    padding: 3px;
+    background: linear-gradient(45deg, 
+        var(--primary-color), 
+        var(--secondary-color), 
+        var(--primary-color)
+    );
+    border-radius: 10px;
+    animation: borderGlow 2s infinite alternate;
+    margin-bottom: 2rem;
+}
+
+@keyframes borderGlow {
+    from {
+        box-shadow: 0 0 5px var(--secondary-color);
+    }
+    to {
+        box-shadow: 0 0 15px var(--primary-color);
+    }
+}
+
+/* 预测过程动画 */
+.prediction-process {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.magic-circles {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.circle {
+    position: absolute;
+    border: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    box-shadow: 0 0 15px var(--secondary-color);
+}
+
+.circle::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(123, 31, 162, 0.3);
+    border-radius: 50%;
+    animation: pulseRing 2s infinite;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.circle-1 {
+    width: 100%;
+    height: 100%;
+    animation: rotate 10s linear infinite;
+}
+
+.circle-2 {
+    width: 70%;
+    height: 70%;
+    animation: rotate 7s linear infinite reverse;
+}
+
+.circle-3 {
+    width: 40%;
+    height: 40%;
+    animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* 预测步骤动画 */
+.prediction-steps {
+    text-align: center;
+}
+
+.prediction-steps .step {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: rgba(74, 20, 140, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(123, 31, 162, 0.3);
+    box-shadow: 0 0 10px rgba(123, 31, 162, 0.2);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInStep 1s forwards;
+}
+
+.prediction-steps .step:nth-child(1) { animation-delay: 0s; }
+.prediction-steps .step:nth-child(2) { animation-delay: 2s; }
+.prediction-steps .step:nth-child(3) { animation-delay: 4s; }
+.prediction-steps .step:nth-child(4) { animation-delay: 6s; }
+
+@keyframes fadeInStep {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 符文动画 */
+.magic-runes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    perspective: 1000px;
+}
+
+.rune {
+    font-size: 2rem;
+    color: var(--rune-color);
+    text-shadow: 0 0 10px var(--rune-color);
+    animation: runeFloat 3s infinite ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.rune:nth-child(1) { animation-delay: 0s; }
+.rune:nth-child(2) { animation-delay: 0.6s; }
+.rune:nth-child(3) { animation-delay: 1.2s; }
+.rune:nth-child(4) { animation-delay: 1.8s; }
+.rune:nth-child(5) { animation-delay: 2.4s; }
+
+@keyframes runeFloat {
+    0%, 100% {
+        transform: translateY(0) rotateY(0deg);
+        text-shadow: 0 0 10px var(--rune-color);
+    }
+    50% {
+        transform: translateY(-10px) rotateY(180deg);
+        text-shadow: 0 0 20px var(--rune-color);
+    }
+}
+
+/* 结果动画 */
+.result-content {
+    position: relative;
+    padding: 2rem;
+    background: rgba(26, 6, 46, 0.6);
+    border-radius: 15px;
+    border: 1px solid rgba(123, 31, 162, 0.3);
+    box-shadow: 
+        0 0 20px rgba(123, 31, 162, 0.3),
+        inset 0 0 15px rgba(123, 31, 162, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.result-content::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, 
+        transparent 0%,
+        rgba(123, 31, 162, 0.2) 50%,
+        transparent 100%
+    );
+    border-radius: 20px;
+    z-index: -1;
+    animation: borderRotate 4s linear infinite;
+}
+
+@keyframes borderRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 神秘符号 */
+.mystic-symbols {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: var(--rune-color);
+}
+
+.mystic-symbols span {
+    margin: 0 0.5rem;
+    animation: symbolFloat 3s infinite ease-in-out;
+}
+
+.mystic-symbols span:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.mystic-symbols span:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes symbolFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 按钮粒子效果 */
+.predict-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.button-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.predict-button:hover .button-particles::before,
+.predict-button:hover .button-particles::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: particleFloat 2s infinite linear;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x, 50px), var(--y, -50px));
+        opacity: 0;
+    }
+}
+
+/* 添加新的魔法能量效果 */
+.magic-energy {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(123, 31, 162, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(74, 20, 140, 0.2) 0%, transparent 50%);
+    filter: blur(20px);
+    animation: energyPulse 4s infinite alternate;
+}
+
+@keyframes energyPulse {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
+
+/* 增强水晶球效果 */
+.crystal-ball {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin: 2rem auto;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.crystal-ball-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.9),
+        rgba(123, 31, 162, 0.4) 40%,
+        rgba(74, 20, 140, 0.8)
+    );
+    position: relative;
+    animation: crystalFloat 4s infinite ease-in-out;
+    box-shadow: 
+        0 0 30px rgba(123, 31, 162, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.crystal-ball::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 20px;
+    background: rgba(123, 31, 162, 0.3);
+    bottom: -20px;
+    left: -10%;
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: shadowPulse 4s infinite ease-in-out;
+}
+
+@keyframes shadowPulse {
+    0%, 100% {
+        transform: scaleX(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scaleX(1.2);
+        opacity: 0.4;
+    }
+}
+
+@keyframes crystalFloat {
+    0%, 100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotateY(180deg);
+    }
+}
+
+/* 增强魔法阵效果 */
+.magic-circles {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.circle {
+    position: absolute;
+    border: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    box-shadow: 0 0 15px var(--secondary-color);
+}
+
+.circle::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(123, 31, 162, 0.3);
+    border-radius: 50%;
+    animation: pulseRing 2s infinite;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* 增强预测步骤效果 */
+.prediction-steps .step {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: rgba(74, 20, 140, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(123, 31, 162, 0.3);
+    box-shadow: 0 0 10px rgba(123, 31, 162, 0.2);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInStep 1s forwards;
+}
+
+/* 增强结果显示效果 */
+.result-content {
+    position: relative;
+    padding: 2rem;
+    background: rgba(26, 6, 46, 0.6);
+    border-radius: 15px;
+    border: 1px solid rgba(123, 31, 162, 0.3);
+    box-shadow: 
+        0 0 20px rgba(123, 31, 162, 0.3),
+        inset 0 0 15px rgba(123, 31, 162, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.result-content::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, 
+        transparent 0%,
+        rgba(123, 31, 162, 0.2) 50%,
+        transparent 100%
+    );
+    border-radius: 20px;
+    z-index: -1;
+    animation: borderRotate 4s linear infinite;
+}
+
+@keyframes borderRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 增强符文效果 */
+.magic-runes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    perspective: 1000px;
+}
+
+.rune {
+    font-size: 2rem;
+    color: var(--rune-color);
+    text-shadow: 0 0 10px var(--rune-color);
+    animation: runeFloat 3s infinite ease-in-out;
+    transform-style: preserve-3d;
+}
+
+@keyframes runeFloat {
+    0%, 100% {
+        transform: translateY(0) rotateY(0deg);
+        text-shadow: 0 0 10px var(--rune-color);
+    }
+    50% {
+        transform: translateY(-10px) rotateY(180deg);
+        text-shadow: 0 0 20px var(--rune-color);
+    }
+}
+
+/* 增强输入框效果 */
+textarea {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 1.5rem;
+    border: 2px solid rgba(123, 31, 162, 0.5);
+    box-shadow: 
+        0 0 15px rgba(123, 31, 162, 0.2),
+        inset 0 0 10px rgba(123, 31, 162, 0.1);
+    transition: all 0.4s ease;
+}
+
+textarea:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 
+        0 0 20px rgba(123, 31, 162, 0.4),
+        inset 0 0 15px rgba(123, 31, 162, 0.2);
+    transform: translateY(-2px);
+}
+
+/* 神秘对话框样式 */
+.mystic-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.mystic-dialog.show {
+    opacity: 1;
+}
+
+.mystic-dialog-content {
+    background: rgba(26, 6, 46, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    border: 2px solid rgba(123, 31, 162, 0.5);
+    box-shadow: 
+        0 0 30px rgba(123, 31, 162, 0.4),
+        inset 0 0 20px rgba(123, 31, 162, 0.2);
+}
+
+.mystic-dialog.show .mystic-dialog-content {
+    transform: translateY(0);
+}
+
+.dialog-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.dialog-header h3 {
+    color: var(--rune-color);
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px var(--secondary-color);
+    animation: titlePulse 2s infinite alternate;
+}
+
+@keyframes titlePulse {
+    from {
+        text-shadow: 0 0 10px var(--secondary-color);
+    }
+    to {
+        text-shadow: 0 0 20px var(--secondary-color), 0 0 30px var(--primary-color);
+    }
+}
+
+.dialog-body {
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.dialog-body p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.dialog-body ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dialog-body li {
+    margin: 1rem 0;
+    padding: 0.8rem;
+    background: rgba(123, 31, 162, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(123, 31, 162, 0.3);
+    transition: all 0.3s ease;
+}
+
+.dialog-body li:hover {
+    transform: translateX(10px);
+    background: rgba(123, 31, 162, 0.3);
+    box-shadow: 0 0 15px rgba(123, 31, 162, 0.3);
+}
+
+.dialog-footer {
+    text-align: center;
+}
+
+.mystic-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mystic-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.mystic-button:hover::before {
+    left: 100%;
+}
+
+.mystic-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(123, 31, 162, 0.5);
+}
+
+/* 验证码对话框样式 */
+.verify-dialog .mystic-dialog-content {
+    max-width: 400px;
+}
+
+.verify-input-container {
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.verify-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(123, 31, 162, 0.5);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.verify-input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 15px rgba(123, 31, 162, 0.4);
+    transform: translateY(-2px);
+}
+
+.verify-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
+}
+
+.verify-error {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.verify-error:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 验证按钮特殊效果 */
+.verify-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.verify-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.5s ease-out;
+}
+
+.verify-button:hover::after {
+    transform: scale(1);
+}
+
+/* 验证对话框动画 */
+.verify-dialog .mystic-dialog-content {
+    animation: verifyAppear 0.5s ease-out;
+}
+
+@keyframes verifyAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 验证码提示样式 */
+.verify-notice {
+    background: rgba(74, 20, 140, 0.2);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(123, 31, 162, 0.3);
+    text-align: center;
+    animation: glowPulse 2s infinite alternate;
+}
+
+.verify-notice p {
+    color: #b39ddb;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.wechat-id {
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0.8rem;
+    background: rgba(123, 31, 162, 0.3);
+    border-radius: 8px;
+    display: inline-block;
+    margin: 0.5rem 0;
+    text-shadow: 0 0 10px rgba(123, 31, 162, 0.8);
+    animation: textGlow 1.5s infinite alternate;
+}
+
+.notice-divider {
+    margin: 1rem 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notice-divider span {
+    color: var(--rune-color);
+    font-size: 1.2rem;
+    opacity: 0.8;
+    animation: spin 3s linear infinite;
+}
+
+.verify-input-container {
+    margin-top: 0.5rem;
+}
+
+.verify-input {
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(123, 31, 162, 0.6);
+    box-shadow: 0 0 10px rgba(123, 31, 162, 0.3);
+}
+
+/* 欢迎弹窗样式 */
+.welcome-dialog .mystic-dialog-content {
+    max-width: 600px;
+    background: linear-gradient(
+        135deg,
+        rgba(26, 6, 46, 0.95) 0%,
+        rgba(74, 20, 140, 0.95) 100%
+    );
+}
+
+.welcome-content {
+    text-align: center;
+    padding: 1rem;
+}
+
+.welcome-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: floatIcon 3s infinite ease-in-out;
+}
+
+@keyframes floatIcon {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+}
+
+.welcome-title {
+    font-size: 2rem;
+    color: var(--rune-color);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px var(--secondary-color);
+    letter-spacing: 3px;
+}
+
+.welcome-description {
+    margin: 2rem 0;
+}
+
+.welcome-description > p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px rgba(123, 31, 162, 0.5);
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature-item {
+    background: rgba(123, 31, 162, 0.2);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(123, 31, 162, 0.3);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    background: rgba(123, 31, 162, 0.3);
+    box-shadow: 0 0 20px rgba(123, 31, 162, 0.3);
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+    animation: pulseIcon 2s infinite;
+}
+
+@keyframes pulseIcon {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.welcome-notice {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(123, 31, 162, 0.3);
+}
+
+.welcome-notice p {
+    margin: 0.5rem 0;
+    color: #b39ddb;
+}
+
+.welcome-notice .highlight {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.3rem 0.8rem;
+    background: rgba(123, 31, 162, 0.4);
+    border-radius: 4px;
+    display: inline-block;
+    margin-left: 0.5rem;
+    animation: glowText 2s infinite alternate;
+}
+
+@keyframes glowText {
+    from {
+        text-shadow: 0 0 5px rgba(123, 31, 162, 0.8);
+        box-shadow: 0 0 5px rgba(123, 31, 162, 0.3);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(123, 31, 162, 1);
+        box-shadow: 0 0 15px rgba(123, 31, 162, 0.5);
+    }
+}
+
+.welcome-button {
+    font-size: 1.2rem;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(45deg, 
+        var(--primary-color),
+        var(--secondary-color),
+        var(--primary-color)
+    );
+    background-size: 200% 200%;
+    animation: gradientMove 3s infinite linear;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.welcome-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(123, 31, 162, 0.6);
+} 
